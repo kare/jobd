@@ -72,13 +72,10 @@ $ cat <mountpoint>/jobs/<job>/log
 2014-02-11 09:42:45.003220637 -0600 CST:hello world
 2014-02-11 09:42:50.00294003 -0600 CST:hello world
 ...
+$ rm -rf <mountpoint>/jobs/<job>
 ```
 
 Jobd jobs are created via the *clone* file. The *clone* file is a peer of the *jobs* directory in the jobd name space. To create a job write a string of the form: <jobname>:<cronexpr>:<cmd> to the clone file
 ```
 $ echo -n 'hello:0 0/5 * * * ? *:echo hello world' > <mountpoint>/clone
 ```
-
-##TODO
-
-* support deleting jobs

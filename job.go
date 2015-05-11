@@ -208,6 +208,16 @@ func (jf *jobfile) Write(fid *srv.FFid, data []byte, offset uint64) (int, error)
 	return jf.writer(data)
 }
 
+// Remove handles remove operations on a jobfile using the file id
+func (jf *jobfile) Remove(fid *srv.FFid) error {
+	glog.V(4).Infof("Entering jobfile.Remove(%v)", fid)
+	defer glog.V(4).Infof("Exiting jobfile.Remove(%v)", fid)
+
+	fid.F.Parent.Remove()
+
+	return nil
+}
+
 // run executes the command associated with a job according to its schedule and
 // records the results until it is told to stop.
 func (j *job) run() {
