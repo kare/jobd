@@ -12,11 +12,13 @@ import (
 	"github.com/golang/glog"
 )
 
-// jobsroot is the root of the jobd file hierarchy
-var jobsroot *jobsdir
+var (
+	// jobsroot is the root of the jobd file hierarchy
+	jobsroot *jobsdir
 
-// jobsdb is the path to the jobs database
-var jobsdb string
+	// jobsdb is the path to the jobs database
+	jobsdb string
+)
 
 func main() {
 	flfsaddr := flag.String("fsaddr", "0.0.0.0:5640", "Address where job file service listens for connections")

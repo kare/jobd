@@ -29,28 +29,30 @@ const (
 	START = "start"
 )
 
-type jobdef struct {
-	name     string
-	schedule string
-	cmd      string
-	state    string
-}
+type (
+	jobdef struct {
+		name     string
+		schedule string
+		cmd      string
+		state    string
+	}
 
-type jobreader func() []byte
-type jobwriter func([]byte) (int, error)
+	jobreader func() []byte
+	jobwriter func([]byte) (int, error)
 
-type job struct {
-	srv.File
-	defn    jobdef
-	done    chan bool
-	history *ring.Ring
-}
+	job struct {
+		srv.File
+		defn    jobdef
+		done    chan bool
+		history *ring.Ring
+	}
 
-type jobfile struct {
-	srv.File
-	reader jobreader
-	writer jobwriter
-}
+	jobfile struct {
+		srv.File
+		reader jobreader
+		writer jobwriter
+	}
+)
 
 // mkJob creates the subtree of files that represent a job in jobd and returns
 // it to its caller.
