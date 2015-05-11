@@ -172,7 +172,7 @@ func mkJobDefinition(name, schedule, cmd string) (*jobdef, error) {
 
 // Read handles read operations on a jobfile using its associated reader.
 func (jf jobfile) Read(fid *srv.FFid, buf []byte, offset uint64) (int, error) {
-	glog.V(4).Infof("Entering jobfile.Read(%v, %v, %)", fid, buf, offset)
+	glog.V(4).Infof("Entering jobfile.Read(%v, %v, %v)", fid, buf, offset)
 	defer glog.V(4).Infof("Exiting jobfile.Read(%v, %v, %v)", fid, buf, offset)
 
 	cont := jf.reader()
