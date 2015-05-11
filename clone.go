@@ -69,7 +69,6 @@ func (k *clonefile) Write(fid *srv.FFid, data []byte, offset uint64) (int, error
 
 // Wstat doesn't do anything but support for the operation is required to make
 // the OS file system calls happy.
-// TODO: verify it's still necessary.
 func (k *clonefile) Wstat(fid *srv.FFid, dir *p.Dir) error {
 	glog.V(4).Infof("Entering clonefile.Wstat(%v, %v)", fid, dir)
 	defer glog.V(4).Infof("Exiting clonefile.Wstat(%v, %v)", fid, dir)

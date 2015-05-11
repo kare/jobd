@@ -189,7 +189,6 @@ func (jf jobfile) Read(fid *srv.FFid, buf []byte, offset uint64) (int, error) {
 
 // Wstat doesn't do anything but support for the operation is required to make
 // the OS file system calls happy.
-// TODO: verify it's still necessary.
 func (jf jobfile) Wstat(fid *srv.FFid, dir *p.Dir) error {
 	glog.V(4).Infof("Entering jobfile.Wstat(%v, %v)", fid, dir)
 	defer glog.V(4).Infof("Exiting jobfile.Wstat(%v, %v, %v)", fid, dir)
